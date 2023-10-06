@@ -1,0 +1,52 @@
+.banner {
+    background-image: url(../image/product-header-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+    padding: 25px 0;
+
+    .banner_content {
+        display: flex;
+        align-items: center;
+
+        @media screen and (max-width: 576px) {
+            display: block;
+        }
+
+        .banner_text {
+            h1 {
+                @include styleText($title_h1_fs_1, bold, $blue_color_1);
+            }
+            b {
+                margin: 10px 0;
+                display: inline-block;
+                @include styleText(20px, 700, $blue_color_2);
+            }
+            .group_button {
+                button {
+                    &:first-child {
+                        @include styleButton($white_color, $blue_color_1);
+                    }
+                    &:last-child {
+                        @include styleButton($blue_color_1, $white_color);
+                        box-shadow: rgba(255, 255, 255, 0.716) 0px 5px 15px;
+                    }
+                    i {
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+
+        .banner_image {
+            img {
+                height: 600px;
+
+                @media screen and (max-width: 576px) {
+                    width: 100%;
+                    
+                }
+            }
+        }
+    }
+}
