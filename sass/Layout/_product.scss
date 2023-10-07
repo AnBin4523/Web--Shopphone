@@ -1,0 +1,53 @@
+.products {
+    padding: 50px 0;
+
+    .product_title {
+        @include styleText($title_h2_fs_1, bold, $blue_color_2);
+        text-align: center;
+    }
+
+    .product_content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+
+        img {
+            width: 100%;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            border-radius: 6px;
+        }
+
+        .product_item {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 6px;
+            padding: 20px;
+            
+            .item_title {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 10px;
+                @include styleText($logo_fs_1, bold, $blue_color_1);
+            }
+
+            .sub_title {
+                margin: 10px 0;
+                @include styleText($desc_fs_1, bold, $blue_color_2);
+            }
+
+            .product_action {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .rating {
+                    color: $yellow_color_1;
+                }
+
+                .buy_now {
+                    @include styleButton($blue_color_1, $white_color);
+                }
+            }
+        }
+    }
+
+}
