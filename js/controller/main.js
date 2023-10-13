@@ -50,3 +50,33 @@ function renderProduct(data) {
   }
   getEle("listProduct").innerHTML = content;
 }
+
+// lọc brand
+function filterProductsByBrand() {
+  var brandCheckboxes = document.querySelectorAll('.brand_name');
+
+  var selectedBrands = [];
+
+  brandCheckboxes.forEach(function (checkbox) {
+    if (checkbox.checked) {
+      selectedBrands.push(checkbox.value);
+    }
+  });
+
+  var productItems = document.querySelectorAll('.product_item');
+
+  productItems.forEach(function (item) {
+    var productBrand = item.querySelector('.sub_title').textContent;
+
+    if (selectedBrands.includes(productBrand) || selectedBrands.includes('All')) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+var brandCheckboxes = document.querySelectorAll('.brand_name');
+brandCheckboxes.forEach(function (checkbox) {
+  checkbox.addEventListener('change', filterProductsByBrand);
+});

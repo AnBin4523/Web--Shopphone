@@ -1,0 +1,25 @@
+.brand {
+    padding: 50px 0;
+
+    .brand_title {
+        @include styleText($title_h2_fs_1, bold, $blue_color_2);
+        text-align: center;
+    }
+
+    .brand_filter {
+        text-align: center;
+        margin-top: 20px;
+        label {
+            margin: 8px 0 8px 30px;
+            font-size: 18px;
+            display: inline;
+            cursor: pointer;
+
+            input {
+                width: 16px;
+                height: 16px;
+                margin-right: 10px;
+            }
+        }
+    }
+}

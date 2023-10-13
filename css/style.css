@@ -147,6 +147,31 @@ header .header_content .header_nav ul li:nth-child(6) i {
   }
 }
 
+.brand {
+  padding: 50px 0;
+}
+.brand .brand_title {
+  font-size: 33px;
+  font-weight: bold;
+  color: #1D355E;
+  text-align: center;
+}
+.brand .brand_filter {
+  text-align: center;
+  margin-top: 20px;
+}
+.brand .brand_filter label {
+  margin: 8px 0 8px 30px;
+  font-size: 18px;
+  display: inline;
+  cursor: pointer;
+}
+.brand .brand_filter label input {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+}
+
 .products {
   padding: 50px 0;
 }
