@@ -170,3 +170,14 @@ function checkOutCart() {
   cart.list = [];
   renderCart();
 }
+
+// on off giỏ hàng
+const cartBtnOff = document.querySelector(".fa-x");
+cartBtnOff.addEventListener("click", function(){
+  document.querySelector(".cart").style.right = "-100%";
+});
+
+const cartBtnOn = document.querySelector(".btn_clickMe");
+cartBtnOn.addEventListener("click", function(){
+  document.querySelector(".cart").style.right = "0";
+});

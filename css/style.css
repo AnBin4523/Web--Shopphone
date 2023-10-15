@@ -180,6 +180,26 @@ header .header_content .header_nav ul li:nth-child(6) i {
   font-weight: bold;
   color: #1D355E;
   text-align: center;
+  margin-bottom: 15px;
+}
+.products .product_title button {
+  background-color: #2A72DC;
+  color: #ffffff;
+  border: 2px solid #2A72DC;
+  border-radius: 6px;
+  padding: 15px 40px;
+  transition: all 0.5s;
+  cursor: pointer;
+  box-shadow: rgba(255, 255, 255, 0.716) 0px 5px 15px;
+  font-size: 20px;
+  padding: 12px 20px;
+}
+.products .product_title button:hover {
+  background-color: #ffffff;
+  color: #2A72DC;
+}
+.products .product_title button i {
+  margin-right: 5px;
 }
 .products .product_content {
   display: grid;
@@ -235,10 +255,26 @@ header .header_content .header_nav ul li:nth-child(6) i {
 }
 
 .cart {
-  width: 50%;
   margin: auto;
   text-align: center;
   padding: 50px 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: #F5F9FE;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 20px;
+  height: 400vh;
+  width: 400px;
+  right: -100%;
+  transition: all 0.5s ease;
+}
+.cart i {
+  cursor: pointer;
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 .cart .cart_title {
   font-size: 33px;
