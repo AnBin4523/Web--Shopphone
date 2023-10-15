@@ -126,6 +126,34 @@
       </div>
     </section>
 
+    <!-- shopping cart -->
+    <section class="cart">
+      <div class="container">
+        <!-- title -->
+        <div class="cart_title">
+          <h2>- Shopping Cart -</h2>
+        </div>
+
+        <!-- cart content -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyCart">
+                
+            </tbody>
+        </table>
+        <div id="cart-summary">
+
+        </div>
+      </div>
+    </section>
+
     <!-- footer -->
     <footer>
       <div class="container">
@@ -220,7 +248,9 @@
 
     <!--App JS  -->
     <script src="./js/models/product.js"></script>
+    <script src="./js/models/cartItem.js"></script>
     <script src="./js/services/callApi.js"></script>
+    <script src="./js/models/cart.js"></script>
 
     <!-- Main JS -->
     <script src="./js/controller/main.js"></script>

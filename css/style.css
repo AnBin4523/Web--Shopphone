@@ -234,6 +234,39 @@ header .header_content .header_nav ul li:nth-child(6) i {
   color: #2A72DC;
 }
 
+.cart {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  padding: 50px 0;
+}
+.cart .cart_title {
+  font-size: 33px;
+  font-weight: bold;
+  color: #1D355E;
+  text-align: center;
+}
+.cart table {
+  width: 100%;
+}
+.cart table tbody tr td {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+}
+.cart table tbody tr td:first-child span {
+  display: block;
+}
+.cart table tbody tr td span {
+  font-weight: bold;
+  font-size: 15px;
+}
+.cart table tbody tr td .btn-quantity {
+  width: 20px;
+}
+.cart table tbody tr td img {
+  width: 70px;
+}
+
 footer {
   width: 100%;
   background-color: #2A72DC;
