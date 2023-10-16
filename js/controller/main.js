@@ -2,6 +2,8 @@ var api = new CallApi();
 var products = [];
 const cart = new Cart();
 
+getLocalStorage();
+
 function getEle(id) {
   return document.getElementById(id);
 }
@@ -100,6 +102,7 @@ function addToCart(id) {
   }
   // console.log(cart.list);
   renderCart();
+  setLocalStorage();
 }
 
 function renderCart() {
@@ -144,6 +147,7 @@ function deleteProduct(id) {
   if (index !== -1) {
     cart.list.splice(index, 1); 
     renderCart(); 
+    setLocalStorage();
   }
 }
 
@@ -161,7 +165,8 @@ function changeQuantity(id, action) {
         deleteProduct(id);
       }
     }
-    renderCart(); 
+    renderCart();
+    setLocalStorage(); 
   }
 }
 
@@ -169,6 +174,7 @@ function changeQuantity(id, action) {
 function checkOutCart() {
   cart.list = [];
   renderCart();
+  setLocalStorage();
 }
 
 // on off giỏ hàng
@@ -181,3 +187,19 @@ const cartBtnOn = document.querySelector(".btn_clickMe");
 cartBtnOn.addEventListener("click", function(){
   document.querySelector(".cart").style.right = "0";
 });
+
+// set local storage
+function setLocalStorage() {
+  var dataString = JSON.stringify(cart.list);
+  localStorage.setItem("CART", dataString);
+}
+
+// get local storage
+function getLocalStorage() {
+  if (localStorage.getItem("CART")) {
+    var dataString = localStorage.getItem("CART");
+    var dataJson = JSON.parse(dataString);
+    cart.list = dataJson;
+    renderCart(cart.list);
+  }
+}
