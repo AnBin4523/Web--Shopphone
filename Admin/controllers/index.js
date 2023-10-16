@@ -82,6 +82,67 @@ function editProduct(id) {
     });
 }
 
+//Validation
+function validate() {
+  let isCheck = true;
+
+  let hoVaTen = getEle("nameProduct").value;
+  const regexHasnumber = /\d/;
+  if (!hoVaTen.trim()) {
+    isCheck = false;
+    getEle("tbNameProduct").innerHTML =
+      "Tên sản phẩm không được để trống và chứa số";
+    getEle("tbNameProduct").style.display = "block";
+  } else {
+    getEle("tbNameProduct").innerHTML = "";
+    getEle("tbNameProduct").style.display = "none";
+  }
+
+  let gia = getEle("price").value;
+
+  if (!gia.trim() || !regexHasnumber.test(gia)) {
+    isCheck = false;
+    getEle("tbPrice").innerHTML = "Giá không được để trống và phải chứa số";
+    getEle("tbPrice").style.display = "block";
+  } else {
+    getEle("tbPrice").innerHTML = "";
+    getEle("tbPrice").style.display = "none";
+  }
+
+  let hinhAnh = getEle("img").value;
+  const regexHasImage = /https?:\/\/[^\s]+/g;
+  if (!regexHasImage.test(hinhAnh)) {
+    isCheck = false;
+    getEle("tbImage").innerHTML = "Hình ảnh không đúng dạng";
+    getEle("tbImage").style.display = "block";
+  } else {
+    getEle("tbImage").innerHTML = "";
+    getEle("tbImage").style.display = "none";
+  }
+
+  let moTa = getEle("desc").value;
+
+  if (!moTa.trim()) {
+    isCheck = false;
+    getEle("tbDesc").innerHTML = "Mô tả không để trống";
+    getEle("tbDesc").style.display = "block";
+  } else {
+    getEle("tbDesc").innerHTML = "";
+    getEle("tbDesc").style.display = "none";
+  }
+
+  let creen = getEle("creen").value;
+
+  if (!moTa.trim()) {
+    isCheck = false;
+    getEle("tbCreen").innerHTML = "Sreen & Camera không để trống";
+    getEle("tbCreen").style.display = "block";
+  } else {
+    getEle("tbCreen").innerHTML = "";
+    getEle("tbCreen").style.display = "none";
+  }
+}
+
 /**
  * cập nhật
  *  */
@@ -135,6 +196,10 @@ function addProduct() {
   var price = getEle("price").value;
   var img = getEle("img").value;
   var desc = getEle("desc").value;
+
+  if (!validate()) {
+    return;
+  }
   //tạo đối tượng product từ lớp đối tượng Product
   var product = new Product("", name, price, img, desc);
 
