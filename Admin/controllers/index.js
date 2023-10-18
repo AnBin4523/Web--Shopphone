@@ -1,5 +1,7 @@
 var api = new CallApi();
 
+let products = [];
+
 function getEle(id) {
   return document.getElementById(id);
 }
@@ -19,6 +21,7 @@ function getListProduct() {
 getListProduct();
 
 function renderUI(data) {
+  products = data;
   var content = "";
 
   for (var i = 0; i < data.length; i++) {
@@ -50,7 +53,7 @@ function renderUI(data) {
 </tr>
 `;
   }
-
+  console.log(getEle("tblDanhSachSP"));
   getEle("tblDanhSachSP").innerHTML = content;
 }
 
@@ -153,6 +156,10 @@ function updateProduct(id) {
   var img = getEle("img").value;
   var desc = getEle("desc").value;
 
+  if (!validate()) {
+    return;
+  }
+
   //tạo đối tượng product từ lớp đối tượng Product
   var product = new Product(id, name, price, img, desc);
   api
@@ -190,6 +197,8 @@ getEle("btnThemSP").onclick = function () {
   document.getElementsByClassName("modal-footer")[0].innerHTML = btnAdd;
 };
 
+/**Thêm  */
+
 function addProduct() {
   //lấy thông tin từ user nhập liệu
   var name = getEle("nameProduct").value;
@@ -217,4 +226,45 @@ function addProduct() {
     .catch(function (error) {
       console.log(error);
     });
+}
+
+/**Tìm kiếm */
+
+getEle("searchInput").addEventListener("keyup", function () {
+  const keyword = getEle("searchInput").value.toLowerCase();
+  const tbSearch = getEle("tblDanhSachSP");
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(keyword)
+  );
+
+  if (!keyword && products.length) {
+    renderUI(products);
+    return;
+  }
+
+  if (filteredProducts.length === 0) {
+    tbSearch.innerHTML = "Không tìm thấy sản phẩm nào.";
+  } else {
+    renderUI(filteredProducts);
+  }
+});
+
+//sắp xếp tăng
+function sortUp() {
+  try {
+    // Sort products in ascending order by price.
+    products.sort((a, b) => a.price - b.price);
+    renderUI(products);
+  } catch (error) {
+    console.error(error);
+  }
+}
+function sortDown() {
+  try {
+    // Sort products in ascending order by price.
+    products.sort((a, b) => b.price - a.price);
+    renderUI(products);
+  } catch (error) {
+    console.error(error);
+  }
 }
