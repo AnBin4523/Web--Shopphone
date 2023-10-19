@@ -33,7 +33,7 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="#"
+              <a class="nav-link" href="../../index.html" target="_blank"
                 >Home <span class="sr-only">(current)</span></a
               >
             </li>
@@ -87,14 +87,30 @@
                 data-target="#myModal"
               >
                 <i class="fa fa-plus mr-1"></i>
-                Thêm Mới
+                Add New
               </button>
+              <button onclick="sortUp()" class="btn btn-warning">
+                <i
+                  class="fa fa-sort-up"
+                  style="margin-right: 3px; color: #dc3545"
+                ></i>
+                Sort Up
+              </button>
+              <button onclick="sortDown()" class="btn btn-warning">
+                <i
+                  class="fa fa-sort-down"
+                  style="margin-right: 3px; color: #dc3545"
+                ></i>
+                Sort Down
+              </button>
+
               <!-- END BUTTON THÊM MỚI -->
             </div>
             <div class="col-md-4">
               <!-- BEGIN TÌM KIẾM -->
               <div class="input-group mb-3">
                 <input
+                  id="searchInput"
                   type="text"
                   class="form-control"
                   placeholder="Nhập từ khóa"
@@ -154,6 +170,7 @@
                   class="form-control"
                   placeholder="Nhập vào tên sản phẩm"
                 />
+                <span style="color: red" id="tbNameProduct"></span>
               </div>
               <div class="form-group">
                 <label>Price</label>
@@ -162,6 +179,7 @@
                   class="form-control"
                   placeholder="Nhập vào giá"
                 />
+                <span style="color: red" id="tbPrice"></span>
               </div>
               <div class="form-group">
                 <label>Image</label>
@@ -170,6 +188,7 @@
                   class="form-control"
                   placeholder="Nhập vào hình sản phẩm"
                 />
+                <span style="color: red" id="tbImage"></span>
               </div>
               <div class="form-group">
                 <label for="">Descibe: </label>
@@ -179,15 +198,17 @@
                   cols="30"
                   rows="2"
                 ></textarea>
+                <span style="color: red" id="tbDesc"></span>
               </div>
               <div class="form-group">
                 <label for="">Creen & Camera: </label>
                 <textarea
-                  id="Creen"
+                  id="creen"
                   class="form-control"
                   cols="30"
                   rows="2"
                 ></textarea>
+                <span style="color: red" id="tbCreen"></span>
               </div>
             </div>
             <!-- Modal footer -->
