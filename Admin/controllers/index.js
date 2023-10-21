@@ -64,7 +64,7 @@ function editProduct(id) {
   //sửa lại tiêu đề cho model
   document.getElementsByClassName("modal-title")[0].innerHTML = "Edit Product";
 
-  //tại nút "Add"=>gna81 vào footer củ model
+  //tại nút "Add"=>gắn vào footer của model
   var btnUpdate = `<button class="btn btn-success" onclick="updateProduct(${id})">Update</button>`;
   document.getElementsByClassName("modal-footer")[0].innerHTML = btnUpdate;
 
@@ -93,8 +93,7 @@ function validate() {
   const regexHasnumber = /\d/;
   if (!hoVaTen.trim()) {
     isCheck = false;
-    getEle("tbNameProduct").innerHTML =
-      "Tên sản phẩm không được để trống và chứa số";
+    getEle("tbNameProduct").innerHTML = "Tên sản phẩm không được để trống ";
     getEle("tbNameProduct").style.display = "block";
   } else {
     getEle("tbNameProduct").innerHTML = "";
@@ -136,7 +135,7 @@ function validate() {
 
   let creen = getEle("creen").value;
 
-  if (!moTa.trim()) {
+  if (!creen.trim()) {
     isCheck = false;
     getEle("tbCreen").innerHTML = "Sreen & Camera không để trống";
     getEle("tbCreen").style.display = "block";
@@ -156,9 +155,9 @@ function updateProduct(id) {
   var img = getEle("img").value;
   var desc = getEle("desc").value;
 
-  if (!validate()) {
-    return;
-  }
+  // if (!validate()) {
+  //   return;
+  // }
 
   //tạo đối tượng product từ lớp đối tượng Product
   var product = new Product(id, name, price, img, desc);
@@ -206,9 +205,11 @@ function addProduct() {
   var img = getEle("img").value;
   var desc = getEle("desc").value;
 
-  if (!validate()) {
-    return;
-  }
+  // if (!validate()) {
+  //   return;
+  // }
+
+  console.log(name);
   //tạo đối tượng product từ lớp đối tượng Product
   var product = new Product("", name, price, img, desc);
 
@@ -217,7 +218,7 @@ function addProduct() {
   promise
     .then(function (result) {
       //
-      alert(`Success Add ` + result.data.tenSP);
+      alert(`Success Add ` + result.data.name);
       //close modal
       document.getElementsByClassName("close")[0].click();
       //thêm thành công => render ra giao diện
@@ -236,12 +237,12 @@ getEle("searchInput").addEventListener("keyup", function () {
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(keyword)
   );
-
-  if (!keyword && products.length) {
+  console.log(products);
+  if (!keyword) {
     renderUI(products);
     return;
   }
-
+  console.log(products);
   if (filteredProducts.length === 0) {
     tbSearch.innerHTML = "Không tìm thấy sản phẩm nào.";
   } else {

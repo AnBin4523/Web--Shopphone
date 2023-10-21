@@ -6,11 +6,10 @@
     position: fixed;
     right: 0;
     top: 0;
-    overflow-y: auto;
-    max-height: 600px;
     background-color: $gray_color_1;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 20px;
+    height: 400vh;
     width: 400px;
     right: -100%;
     transition: all 0.5s ease;
