@@ -11,6 +11,7 @@ function getListProduct() {
 
   promise
     .then(function (result) {
+      products = result.data;
       renderUI(result.data);
     })
     .catch(function (error) {
@@ -21,7 +22,6 @@ function getListProduct() {
 getListProduct();
 
 function renderUI(data) {
-  products = data;
   var content = "";
 
   for (var i = 0; i < data.length; i++) {
@@ -143,6 +143,8 @@ function validate() {
     getEle("tbCreen").innerHTML = "";
     getEle("tbCreen").style.display = "none";
   }
+
+  return isCheck;
 }
 
 /**
@@ -155,9 +157,9 @@ function updateProduct(id) {
   var img = getEle("img").value;
   var desc = getEle("desc").value;
 
-  // if (!validate()) {
-  //   return;
-  // }
+  if (!validate()) {
+    return;
+  }
 
   //tạo đối tượng product từ lớp đối tượng Product
   var product = new Product(id, name, price, img, desc);
@@ -165,6 +167,7 @@ function updateProduct(id) {
     .updateProductApi(product)
     .then(function () {
       //close modal
+      console.log(123);
       document.getElementsByClassName("close")[0].click();
       getListProduct();
     })
@@ -205,9 +208,9 @@ function addProduct() {
   var img = getEle("img").value;
   var desc = getEle("desc").value;
 
-  // if (!validate()) {
-  //   return;
-  // }
+  if (!validate()) {
+    return;
+  }
 
   console.log(name);
   //tạo đối tượng product từ lớp đối tượng Product
